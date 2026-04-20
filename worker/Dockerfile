@@ -1,8 +1,8 @@
 FROM python:3.11-slim AS builder
-# hadolint ignore=DL3008,DL3013,DL3042
 
 WORKDIR /app
 
+# hadolint ignore=DL3008,DL3013,DL3042
 RUN apt-get update && apt-get install -y --no-install-recommends gcc && \
     rm -rf /var/lib/apt/lists/*
 
