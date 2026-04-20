@@ -1,15 +1,15 @@
-FROM node:18-slim AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
 COPY package.json .
 RUN npm install
 
-FROM node:18-slim
+FROM node:18-alpine
 
 WORKDIR /app
 
-RUN useradd -m -u 1001 appuser
+RUN adduser -D -u 1001 appuser
 
 COPY --from=builder /app/node_modules ./node_modules
 COPY app.js .
