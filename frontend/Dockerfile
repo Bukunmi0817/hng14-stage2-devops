@@ -9,6 +9,9 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# hadolint ignore=DL3018
+RUN apk update && apk upgrade --no-cache
+
 RUN adduser -D -u 1001 appuser
 
 COPY --from=builder /app/node_modules ./node_modules
